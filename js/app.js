@@ -17,6 +17,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    document.addEventListener('backbutton', onBackKeyDown, false);
+    function onBackKeyDown(){
+      alert("hello");
+    }
   });
 })
 

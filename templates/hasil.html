@@ -3,12 +3,14 @@
     <div class="box tengah">
     	<div class="list list-inset">
     	  <label class="item item-input">
-    	    <input type="text" placeholder="No. Pendaftaran">
+    	    <input type="text" placeholder="No. Pendaftaran" id="no_daftar">
     	  </label>
 				<br/>
-    	  <button class="button button-small button-balanced">
+    	  <button class="button button-small button-balanced" ng-click="getStatus()">
     	        Lihat Hasil
     	  </button>
+          <br/>
+          <div class="box tengah" id="info">{{status}}</div>
     	</div>
     </div>
   </ion-content>
