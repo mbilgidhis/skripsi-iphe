@@ -40,12 +40,22 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.pendaftaran', {
-    url: "/pendaftaran",
+  .state('app.pendaftaran1', {
+    url: "/pendaftaran1",
     views: {
       'menuContent': {
-        templateUrl: "templates/pendaftaran.html",
+        templateUrl: "templates/pendaftaran1.html",
         controller: "PendaftaranCtrl"
+      }
+    }
+  })
+
+  .state('app.pendaftaran2', {
+    url: "/pendaftaran2",
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/pendaftaran2.html',
+        controller: 'PendaftaranCtrl'
       }
     }
   })

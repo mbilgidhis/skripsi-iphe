@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $location) {
   $scope.menus = [  { name : "Informasi Pendaftaran", href : "#/app/informasi"},
-                    { name : "Pendaftaran", href: "#/app/pendaftaran"},
+                    { name : "Pendaftaran", href: "#/app/pendaftaran1"},
                     { name : "Cek Hasil", href : "#/app/hasil"},
                     { name : "Kontak Kami", href : "#/app/kontak"}];
 
@@ -17,10 +17,12 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PendaftaranCtrl', function($scope){
-  $scope.tanggals = ["Pilih tanggal"];
+.controller('PendaftaranCtrl', function($scope, $state){
+  
+  $scope.tanggals = [{name: "Pilih tanggal", value: null}];
   for(var x = 1; x <= 31; x++){
-    $scope.tanggals.push(x);
+    var date = {name: x, value: x};
+    $scope.tanggals.push(date);
   }
 
   $scope.bulans = [
@@ -40,7 +42,10 @@ angular.module('starter.controllers', [])
   ];
 
   $scope.bloods = [ "A", "B", "O", "AB" ];
-                
+     
+  $scope.gotoNextDaftar2 = function(){
+    $state.go('app.pendaftaran2');
+  };          
 })
 
 .controller('HasilCtrl', function($scope){
