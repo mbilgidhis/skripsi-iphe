@@ -45,7 +45,8 @@ angular.module('starter.controllers', [])
      
   $scope.gotoNextDaftar2 = function(){
     $state.go('app.pendaftaran2');
-  };          
+  };       
+     
 })
 
 .controller('HasilCtrl', function($scope){
