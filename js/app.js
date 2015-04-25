@@ -48,6 +48,36 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  .state('app.prodi', {
+    url: "/informasi/prodi",
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/prodi.html',
+        controller: 'ProdiCtrl'
+      }
+    }
+  })
+
+  .state('app.jadwal', {
+    url: '/informasi/jadwal',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/jadwal.html',
+        controller: 'JadwalCtrl'
+      }
+    }
+  })
+
+  .state('app.biaya', {
+    url: "/informasi/biaya",
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/biaya.html',
+        controller: 'BiayaCtrl'
+      }
+    }
+  })
+
   .state('app.pendaftaran1', {
     url: "/pendaftaran1",
     views: {
@@ -63,6 +93,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/pendaftaran2.html',
+        controller: 'PendaftaranCtrl'
+      }
+    }
+  })
+
+  .state('app.pendaftaran3', {
+    url: "/pendaftaran3",
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/pendaftaran3.html',
         controller: 'PendaftaranCtrl'
       }
     }

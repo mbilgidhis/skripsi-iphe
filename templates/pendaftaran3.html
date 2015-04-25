@@ -1,0 +1,43 @@
+<ion-view view-title="Pendaftaran">
+  <ion-content>
+  <h4><pre>Bagian III: Data Sekolah Menengah</pre></h4>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Nama Sekolah</span>
+        <input type="text" placeholder="Nama sekolah asal Anda" maxlength="50">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Alamat Sekolah</span>
+        <input type="text" placeholder="Alamat asal sekolah Anda">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">No. Telepon</span>
+        <input type="text" placeholder="Nomor telepon sekolah Anda">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Tahun Lulus</span>
+        <input type="text" placeholder="Tahun Anda lulus">
+      </label>
+      <label class="item item-select item-stacked-label">
+        <span class="input-label">SMA / SMK</span>
+        <select id="" name="">
+            <option ng-repeat="smasmk in smasmks" ng-value="{{smasmk.value}}">{{smasmk.name}}</option>
+        </select>
+      </label>
+      <label class="item item-select item-stacked-label">
+        <span class="input-label">Negri / Swasta</span>
+        <select id="" name="">
+            <option ng-repeat="sekolah in sekolahs" ng-value="{{sekolah.value}}">{{sekolah.name}}</option>
+        </select>
+      </label>
+      <label class="item item-select item-stacked-label">
+        <span class="input-label">Jurusan</span>
+        <select id="" name="">
+            <option ng-repeat="jurusan in jurusans" ng-value="{{jurusan.value}}">{{jurusan.name}}</option>
+        </select>
+      </label>
+      <br/>
+      <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar3()">Daftar</button>
+  </div>
+  </ion-content>
+</ion-view>

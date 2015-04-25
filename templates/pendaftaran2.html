@@ -1,59 +1,27 @@
 <ion-view view-title="Pendaftaran">
   <ion-content>
-    <h4><pre>Bagian II: Data Sekolah</pre></h4>
+    <h4><pre>Bagian II: Data Orang Tua / Wali</pre></h4>
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nama Lengkap</span>
-        <input type="text" placeholder="Nama lengkap sesuai ijasah" maxlength="50">
+        <input type="text" placeholder="Nama lengkap orang tua / wali" maxlength="50">
       </label>
       <label class="item item-input item-stacked-label">
-        <span class="input-label">Tempat Lahir</span>
-        <input type="text" placeholder="Kota lahir Anda" maxlength="20">
+        <span class="input-label">Alamat</span>
+        <input type="text" placeholder="Alamat orang tua / wali">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">No. Telepon</span>
+        <input type="text" placeholder="Nomor telepon orang tua / wali">
       </label>
       <label class="item item-select item-stacked-label">
-        <span class="input-label">Tanggal Lahir</span>
+        <span class="input-label">Pekerjaan</span>
         <select id="" name="">
-            <option ng-repeat="tanggal in tanggals" ng-value="{{tanggal.value}}">{{tanggal.name}}</option>
+            <option ng-repeat="pekerjaan in pekerjaans" ng-value="{{pekerjaan.value}}">{{pekerjaan.name}}</option>
         </select>
-      </label>
-      <label class="item item-select item-stacked-label">
-        <span class="input-label">Bulan Lahir</span>
-        <select id="" name="">
-            <option ng-repeat="bulan in bulans" ng-value="{{bulan.value}}">{{bulan.name}}</option>
-        </select>
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Tahun Lahir</span>
-        <input type="text" placeholder="Tahun lahir Anda" maxlength="4">
-      </label>
-      <label class="item item-select item-stacked-label">
-        <span class="input-label">Golongan Darah</span>
-        <select id="" name="">
-            <option ng-repeat="blood in bloods" ng-value="{{blood}}">{{blood}}</option>
-        </select>
-      </label>
-      <label class="item item-textarea item-stacked-label">
-        <span class="input-label">Alamat Asal</span>
-        <textarea name="" id="" maxlength="50" placeholder="Alamat asal Anda"></textarea>
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">No. Telephone</span>
-        <input type="text" placeholder="Nomor yang aktif">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">E-mail</span>
-        <input type="text" placeholder="E-mail yang aktif">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Pilihan Tanggal Tes</span>
-        <input type="text" placeholder="Kuarepmuuuhhhh">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Alamat Pemberitahuan Hasil Tes</span>
-        <input type="text" placeholder="Alamat tujuan pengiriman hasil tes">
       </label>
       <br/>
-      <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar2()">Lanjut</button></div>
+      <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar3()">Lanjut</button></div>
       
     </div>
   </ion-content>

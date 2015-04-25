@@ -28,9 +28,33 @@
       <input type="text" placeholder="Tahun lahir Anda" maxlength="4">
     </label>
     <label class="item item-select item-stacked-label">
+      <span class="input-label">Jenis Kelamin</span>
+      <select id="" name="">
+        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin.value}}">{{kelamin.name}}</option>
+      </select>
+    </label>
+    <label class="item item-select item-stacked-label">
+      <span class="input-label">Status Pernikahan</span>
+      <select id="" name="">
+        <option ng-repeat="status in statuss" ng-value="{{status.value}}">{{status.name}}</option>
+      </select>
+    </label>
+    <label class="item item-select item-stacked-label">
+      <span class="input-label">Agama</span>
+      <select id="" name="">
+        <option ng-repeat="agama in agamas" ng-value="{{agama.value}}">{{agama.name}}</option>
+      </select>
+    </label>
+    <label class="item item-select item-stacked-label">
       <span class="input-label">Golongan Darah</span>
       <select id="" name="">
       	<option ng-repeat="blood in bloods" ng-value="{{blood}}">{{blood}}</option>
+      </select>
+    </label>
+    <label class="item item-select item-stacked-label">
+      <span class="input-label">Kewarganegaraan</span>
+      <select id="" name="">
+        <option ng-repeat="warga in wargas" ng-value="{{warga.value}}">{{warga.name}}</option>
       </select>
     </label>
     <label class="item item-textarea item-stacked-label">
@@ -44,6 +68,26 @@
     <label class="item item-input item-stacked-label">
     	<span class="input-label">E-mail</span>
     	<input type="text" placeholder="E-mail yang aktif">
+    </label>
+    <label class="item item-select item-stacked-label">
+      <span class="input-label">Pilihan 1</span>
+      <select id="" name="">
+        <option ng-repeat="pilihan1 in pilihan1s" ng-value="{{pilihan1.value}}">{{pilihan1.name}}</option>
+      </select>
+    </label>
+    <label class="item item-select item-stacked-label">
+      <span class="input-label">Pilihan 2</span>
+      <select id="" name="">
+        <option ng-repeat="pilihan2 in pilihan2s" ng-value="{{pilihan2.value}}">{{pilihan2.name}}</option>
+      </select>
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Sumbangan Pilihan 1</span>
+      <input type="text" placeholder="Masukkan dalam rupiah">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Sumbangan Pilihan 2</span>
+      <input type="text" placeholder="Masukkan dalam rupiah">
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">Pilihan Tanggal Tes</span>
