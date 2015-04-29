@@ -1,11 +1,10 @@
 <ion-view view-title="Pendaftaran">
   <ion-content>
-  <h3>Pendaftaran</h3>
   <h4><pre>Bagian I: Data Diri</pre></h4>
   <div class="list">
     <label class="item item-input item-stacked-label">
       <span class="input-label">Nama Lengkap</span>
-      <input type="text" placeholder="Nama lengkap sesuai ijasah" maxlength="50">
+      <input type="text" placeholder="Nama lengkap sesuai ijazah" maxlength="50">
     </label>
     <label class="item item-input item-stacked-label">
       <span class="input-label">Tempat Lahir</span>
@@ -13,19 +12,7 @@
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Tanggal Lahir</span>
-      <select id="" name="">
-      	<option ng-repeat="tanggal in tanggals" ng-value="{{tanggal.value}}">{{tanggal.name}}</option>
-      </select>
-    </label>
-    <label class="item item-select item-stacked-label">
-      <span class="input-label">Bulan Lahir</span>
-      <select id="" name="">
-      	<option ng-repeat="bulan in bulans" ng-value="{{bulan.value}}">{{bulan.name}}</option>
-      </select>
-    </label>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Tahun Lahir</span>
-      <input type="date" placeholder="Tahun lahir Anda">
+      <input type="date" placeholder="Tanggal lahir Anda">
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Jenis Kelamin</span>
@@ -59,7 +46,7 @@
     </label>
     <label class="item item-textarea item-stacked-label">
       <span class="input-label">Alamat Asal</span>
-      <textarea name="" id="" maxlength="50" placeholder="Alamat asal Anda"></textarea>
+      <textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat asal Anda"></textarea>
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">No. Telephone</span>
@@ -67,7 +54,7 @@
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">E-mail</span>
-    	<input type="text" placeholder="E-mail yang aktif">
+    	<input type="email" placeholder="E-mail yang aktif">
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Pilihan 1</span>
@@ -83,11 +70,11 @@
     </label>
     <label class="item item-input item-stacked-label">
       <span class="input-label">Sumbangan Pilihan 1</span>
-      <input type="text" placeholder="Masukkan dalam rupiah">
+      <input type="number" placeholder="Masukkan dalam rupiah">
     </label>
     <label class="item item-input item-stacked-label">
       <span class="input-label">Sumbangan Pilihan 2</span>
-      <input type="text" placeholder="Masukkan dalam rupiah">
+      <input type="number" placeholder="Masukkan dalam rupiah">
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">Pilihan Tanggal Tes</span>
@@ -95,7 +82,7 @@
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">Alamat Pemberitahuan Hasil Tes</span>
-    	<input type="text" placeholder="Alamat tujuan pengiriman hasil tes">
+    	<textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat pengiriman hasil tes"></textarea>
     </label>
     <br/>
     <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar2()">Lanjut</button></div>

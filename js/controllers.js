@@ -25,22 +25,6 @@ angular.module('starter.controllers', [])
     $scope.tanggals.push(date);
   }
 
-  $scope.bulans = [
-                { name: "Pilih bulan", value: null},
-                { name: "Jan", value: 1 },
-                { name: "Feb", value: 2},
-                { name: "Mar", value: 3},
-                { name: "Apr", value: 4},
-                { name: "Mei", value: 5},
-                { name: "Jun", value: 6},
-                { name: "Jul", value: 7},
-                { name: "Agt", value: 8},
-                { name: "Sep", value: 9},
-                { name: "Okt", value: 10},
-                { name: "Nov", value: 11},
-                { name: "Des", value: 12},
-  ];
-
   $scope.kelamins = [
                 { name: "Pilih salah satu", value: null},
                 { name: "Laki-laki", value: 1 },
@@ -65,7 +49,7 @@ angular.module('starter.controllers', [])
 
   $scope.bloods = [ "A", "B", "O", "AB" ];
 
-  $scope.jurusans = [
+  $scope.wargas = [
                 { name: "Pilih salah satu", value: null},
                 { name: "WNI", value: 1 },
                 { name: "WNA", value: 2},
