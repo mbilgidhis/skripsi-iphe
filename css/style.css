@@ -6,3 +6,31 @@
 .tengah{
 	text-align: center;
 }
+
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
+    color: #dddddd;
+    font-weight: bold;
+    background-color:#3d0b0b;
+    border-color: #5e1b2c;
+}
+
+.bar.bar-maroon {
+    border-color: #5e1b2c;
+    background-color: #5e1b2c;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #dddddd; }
+    .bar.bar-maroon .title {
+      color: #dddddd; }
+    .bar.bar-maroon.bar-footer {
+      background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); 
+}
+
+.maroon{
+	color: #ddd;
+	background-color: #5e1b2c;
+}
