@@ -13,6 +13,10 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('HomeCtrl', function(){
+  
+})
+
 .controller('InformasiCtrl', function($scope){
 
 })
