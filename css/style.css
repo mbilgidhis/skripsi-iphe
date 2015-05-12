@@ -3,6 +3,10 @@
 .box{
 	padding: 20px;
 }
+.tepi{
+    padding-left: 8px;
+    padding-right: 8px;
+}
 .tengah{
 	text-align: center;
 }
@@ -33,4 +37,18 @@
 .maroon{
 	color: #ddd;
 	background-color: #5e1b2c;
+}
+
+.text-maroon{
+    color: #5e1b2c;
+}
+
+.italic{
+    font-style: italic;
+    font-size: 10px;
+    text-align: center;
+}
+
+.rata{
+    text-align: justify;
 }

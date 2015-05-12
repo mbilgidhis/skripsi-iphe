@@ -1,7 +1,8 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $location) {
-  $scope.menus = [  { name : "Informasi Pendaftaran", href : "#/app/informasi"},
+  $scope.menus = [  { name : "Home", href : "#/app/home"},
+                    { name : "Informasi Pendaftaran", href : "#/app/informasi"},
                     { name : "Pendaftaran", href: "#/app/pendaftaran1"},
                     { name : "Cek Hasil", href : "#/app/hasil"},
                     { name : "Kontak Kami", href : "#/app/kontak"}];
