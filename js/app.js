@@ -93,7 +93,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: "templates/pendaftaran1.html",
-        controller: "PendaftaranCtrl"
+        controller: "Pendaftaran1Ctrl"
       }
     }
   })
@@ -103,7 +103,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/pendaftaran2.html',
-        controller: 'PendaftaranCtrl'
+        controller: 'Pendaftaran2Ctrl'
       }
     }
   })
@@ -113,7 +113,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/pendaftaran3.html',
-        controller: 'PendaftaranCtrl'
+        controller: 'Pendaftaran3Ctrl'
       }
     }
   })

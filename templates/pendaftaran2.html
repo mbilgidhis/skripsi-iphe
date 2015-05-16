@@ -13,11 +13,11 @@
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">No. Telepon</span>
-        <input type="tel" placeholder="Nomor telepon orang tua / wali">
+        <input type="tel" placeholder="Nomor telepon orang tua / wali" ng-model="dataPendaftar2.teleponOrtu">
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Pekerjaan</span>
-        <select id="" name="">
+        <select ng-model="dataPendaftar2.pekerjaanOrtu">
             <option ng-repeat="pekerjaan in pekerjaans" ng-value="{{pekerjaan.value}}">{{pekerjaan.name}}</option>
         </select>
       </label>

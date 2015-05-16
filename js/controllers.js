@@ -4,10 +4,30 @@ angular.module('starter.controllers', [])
   var data = {
     namaPendaftar : "",
     tempatLahir : "",
-    namaOrtu : "",
-    alamatOrtu : "",
-    namaSekolah : "",
-    alamatSekolah: ""
+    tanggalLahir : "",
+    jenisKelamin : "",
+    statusPernikahan : "",
+    agama : "",
+    golonganDarah : "",
+    kewarganegaraan : "",
+    alamatAsal : "",
+    noTelepon : "",
+    email : "",
+    pilihan1 : "",
+    pilihan2 : "",
+    tanggalTes : "",
+    alamatHasil: "",
+    namaOrtu: "",
+    alamatOrtu: "",
+    teleponOrtu : "",
+    pekerjaanOrtu : "",
+    namaSekolah: "",
+    alamatSekolah: "",
+    teleponSekolah : "",
+    tahunLulus : "",
+    sasmk : "",
+    negriSwasta : "",
+    jurusanSekolah : ""
   };
   return data;
 })
@@ -34,14 +54,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PendaftaranCtrl', function($scope, $state, DataPendaftar, $http){
+.controller('Pendaftaran1Ctrl', function($scope, $state, DataPendaftar, $http){
   
-  $scope.tanggals = [{name: "Pilih tanggal", value: null}];
-  for(var x = 1; x <= 31; x++){
-    var date = {name: x, value: x};
-    $scope.tanggals.push(date);
-  }
-
   $scope.kelamins = [
                 { name: "Pilih salah satu", value: null},
                 { name: "Laki-laki", value: 1 },
@@ -72,52 +86,24 @@ angular.module('starter.controllers', [])
                 { name: "WNA", value: 2},
   ];
 
-  $scope.jurusans = [
-                { name: "Pilih salah satu", value: null},
-                { name: "IPA/Setara", value: 1 },
-                { name: "IPS/Setara", value: 2},
-                { name: "Bahasa/Setara", value: 3},
-                { name: "Lain-lain", value: 4},
-  ];
-
-  $scope.pekerjaans = [
-                { name: "Pilih salah satu", value: null},
-                { name: "PNS", value: 1 },
-                { name: "Wiraswasta", value: 2},
-                { name: "Pegawai swasta", value: 3},
-                { name: "Guru", value: 4},
-                { name: "TNI/POLRI", value: 5},
-                { name: "Petani", value: 6},
-                { name: "Pensiunan", value: 7},
-                { name: "Lain-lain", value: 8},
-  ];
-
-  $scope.smasmks = [
-                { name: "Pilih salah satu", value: null},
-                { name: "SMA", value: 1 },
-                { name: "SMK", value: 2},
-  ];
-
-  $scope.sekolahs = [
-                { name: "Pilih salah satu", value: null},
-                { name: "Negri", value: 1 },
-                { name: "Swasta", value: 2},
-  ];
-
   $scope.dataPendaftar1 = {
     namaPendaftar : "",
-    tempatLahir : ""
+    tempatLahir : "",
+    tanggalLahir : "",
+    jenisKelamin : "",
+    statusPernikahan : "",
+    agama : "",
+    golonganDarah : "",
+    kewarganegaraan : "",
+    alamatAsal : "",
+    noTelepon : "",
+    email : "",
+    pilihan1 : "",
+    pilihan2 : "",
+    tanggalTes : "",
+    alamatHasil: ""
   };
 
-  $scope.dataPendaftar2 = {
-    namaOrtu: "",
-    alamatOrtu: ""
-  };
-
-  $scope.dataPendaftar3 = {
-    namaSekolah: "",
-    alamatSekolah: ""
-  };
 
   $scope.gotoNextDaftar2 = function(){
     $state.go('app.pendaftaran2');
@@ -128,6 +114,50 @@ angular.module('starter.controllers', [])
     console.log(DataPendaftar);
   };       
 
+  $scope.pilihans = {};
+
+  var pilihan = $http({
+    url: 'http://www.andibaskoro.com/iphe/api/prodis',
+    method: 'get',
+    dataType: 'json'
+  }).success(function(data){
+    $scope.pilihans = data.data;
+  });
+
+  $scope.dates = {};
+
+  var date = $http({
+    url: 'http://www.andibaskoro.com/iphe/api/dates',
+    method: 'get',
+    dataType: 'json'
+  }).success(function(data){
+    $scope.dates = data.data;
+  });
+
+
+
+})
+
+.controller('Pendaftaran2Ctrl', function($scope, $state, DataPendaftar, $http){
+  $scope.pekerjaans = [
+                { name: "Pilih salah satu", value: null},
+                { name: "PNS", value: 1 },
+                { name: "Wiraswasta", value: 2},
+                { name: "Pegawai swasta", value: 3},
+                { name: "Guru", value: 4},
+                { name: "TNI/POLRI", value: 5},
+                { name: "Petani", value: 6},
+                { name: "Pensiunan", value: 7},
+                { name: "Lain-lain", value: 8},
+   ];
+
+  $scope.dataPendaftar2 = {
+    namaOrtu: "",
+    alamatOrtu: "",
+    teleponOrtu : "",
+    pekerjaanOrtu : ""
+  };
+
   $scope.gotoNextDaftar3 = function(){
     $state.go('app.pendaftaran3');
     console.log($scope.pendaftaran2);
@@ -137,6 +167,41 @@ angular.module('starter.controllers', [])
     console.log(DataPendaftar);
   };
 
+})
+
+.controller('Pendaftaran3Ctrl', function($scope, $state, DataPendaftar, $http){
+
+  $scope.smasmks = ['SMA', 'SMK'];
+  // $scope.smasmks = [
+  //               { name: "Pilih salah satu", value: null},
+  //               { name: "SMA", value: 1 },
+  //               { name: "SMK", value: 2},
+  // ];
+
+  $scope.sekolahs = [
+                { name: "Pilih salah satu", value: null},
+                { name: "Negri", value: 1 },
+                { name: "Swasta", value: 2},
+  ];
+
+  $scope.jurusans = [
+                { name: "Pilih salah satu", value: null},
+                { name: "IPA/Setara", value: 1 },
+                { name: "IPS/Setara", value: 2},
+                { name: "Bahasa/Setara", value: 3},
+                { name: "Lain-lain", value: 4},
+  ];
+
+  $scope.dataPendaftar3 = {
+    namaSekolah: "",
+    alamatSekolah: "",
+    teleponSekolah : "",
+    tahunLulus : "",
+    sasmk : "",
+    negriSwasta : "",
+    jurusanSekolah : ""
+  };
+
   $scope.daftar = function(){
     console.log($scope.dataPendaftar3);
     angular.forEach($scope.dataPendaftar3, function(value,key){
@@ -144,52 +209,6 @@ angular.module('starter.controllers', [])
     });
     console.log(DataPendaftar);
   };
-
-  $scope.pilihans = [
-    { id: "Pilih", prodi: null }
-  ];
-
-  $scope.pilihans = $http({
-    url: 'http://www.andibaskoro.com/iphe/api/prodis',
-    method: 'get',
-    dataType: 'json'
-  }).success(function(data){
-    console.log(data);
-  });
-
-  $scope.dates = $http({
-    url: 'http://www.andibaskoro.com/iphe/api/dates',
-    method: 'get',
-    dataType: 'json'
-  }).success(function(data){
-    console.log(data);
-  });
-
-  // $scope.pilihan1s = [
-  //               { name: "Prodi", value: null},
-  //               { name: "Pendidikan Dokter", value: 1 },
-  //               { name: "Teologi", value: 2},
-  //               { name: "Manajemen", value: 3},
-  //               { name: "Akuntansi", value: 4},
-  //               { name: "Teknik Arsitektur", value: 5},
-  //               { name: "Desain Produk", value: 6},
-  //               { name: "Teknik Informatika", value: 7},
-  //               { name: "Sistem Informasi", value: 8},
-  //               { name: "Biologi", value: 9},
-  // ];
-
-  // $scope.pilihan2s = [
-  //               { name: "Prodi", value: null},
-  //               { name: "Pendidikan Dokter", value: 1 },
-  //               { name: "Teologi", value: 2},
-  //               { name: "Manajemen", value: 3},
-  //               { name: "Akuntansi", value: 4},
-  //               { name: "Teknik Arsitektur", value: 5},
-  //               { name: "Desain Produk", value: 6},
-  //               { name: "Teknik Informatika", value: 7},
-  //               { name: "Sistem Informasi", value: 8},
-  //               { name: "Biologi", value: 9},
-  // ];
 
 })
 
