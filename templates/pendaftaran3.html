@@ -5,11 +5,11 @@
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nama Sekolah</span>
-        <input type="text" placeholder="Nama sekolah asal Anda" maxlength="50">
+        <input type="text" placeholder="Nama sekolah asal Anda" maxlength="50" ng-model="dataPendaftar3.namaSekolah">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Alamat Sekolah</span>
-        <input type="text" placeholder="Alamat asal sekolah Anda">
+        <input type="text" placeholder="Alamat asal sekolah Anda" ng-model="dataPendaftar3.alamatSekolah">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">No. Telepon</span>
@@ -38,7 +38,7 @@
         </select>
       </label>
       <br/>
-      <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar3()">Daftar</button>
+      <div class="box tengah"><button class="button button-balanced" ng-click="daftar()">Daftar</button>
   </div>
   </ion-content>
 </ion-view>

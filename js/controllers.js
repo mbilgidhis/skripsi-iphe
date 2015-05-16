@@ -1,5 +1,17 @@
 angular.module('starter.controllers', [])
 
+.factory('DataPendaftar', function(){
+  var data = {
+    namaPendaftar : "",
+    tempatLahir : "",
+    namaOrtu : "",
+    alamatOrtu : "",
+    namaSekolah : "",
+    alamatSekolah: ""
+  };
+  return data;
+})
+
 .controller('AppCtrl', function($scope, $location) {
   $scope.menus = [  { name : "Home", href : "#/app/home"},
                     { name : "Informasi Pendaftaran", href : "#/app/informasi"},
@@ -22,7 +34,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PendaftaranCtrl', function($scope, $state){
+.controller('PendaftaranCtrl', function($scope, $state, DataPendaftar, $http){
   
   $scope.tanggals = [{name: "Pilih tanggal", value: null}];
   for(var x = 1; x <= 31; x++){
@@ -92,40 +104,92 @@ angular.module('starter.controllers', [])
                 { name: "Swasta", value: 2},
   ];
 
+  $scope.dataPendaftar1 = {
+    namaPendaftar : "",
+    tempatLahir : ""
+  };
+
+  $scope.dataPendaftar2 = {
+    namaOrtu: "",
+    alamatOrtu: ""
+  };
+
+  $scope.dataPendaftar3 = {
+    namaSekolah: "",
+    alamatSekolah: ""
+  };
 
   $scope.gotoNextDaftar2 = function(){
     $state.go('app.pendaftaran2');
+    console.log($scope.dataPendaftar1);
+    angular.forEach($scope.dataPendaftar1, function(value, key){
+      DataPendaftar[key] = value;
+    });
+    console.log(DataPendaftar);
   };       
 
   $scope.gotoNextDaftar3 = function(){
-    $state.go('app.pendaftaran3')
-  }
+    $state.go('app.pendaftaran3');
+    console.log($scope.pendaftaran2);
+    angular.forEach($scope.dataPendaftar2, function(value, key){
+      DataPendaftar[key] = value;
+    });
+    console.log(DataPendaftar);
+  };
 
-  $scope.pilihan1s = [
-                { name: "Prodi", value: null},
-                { name: "Pendidikan Dokter", value: 1 },
-                { name: "Teologi", value: 2},
-                { name: "Manajemen", value: 3},
-                { name: "Akuntansi", value: 4},
-                { name: "Teknik Arsitektur", value: 5},
-                { name: "Desain Produk", value: 6},
-                { name: "Teknik Informatika", value: 7},
-                { name: "Sistem Informasi", value: 8},
-                { name: "Biologi", value: 9},
+  $scope.daftar = function(){
+    console.log($scope.dataPendaftar3);
+    angular.forEach($scope.dataPendaftar3, function(value,key){
+      DataPendaftar[key] = value;
+    });
+    console.log(DataPendaftar);
+  };
+
+  $scope.pilihans = [
+    { id: "Pilih", prodi: null }
   ];
 
-  $scope.pilihan2s = [
-                { name: "Prodi", value: null},
-                { name: "Pendidikan Dokter", value: 1 },
-                { name: "Teologi", value: 2},
-                { name: "Manajemen", value: 3},
-                { name: "Akuntansi", value: 4},
-                { name: "Teknik Arsitektur", value: 5},
-                { name: "Desain Produk", value: 6},
-                { name: "Teknik Informatika", value: 7},
-                { name: "Sistem Informasi", value: 8},
-                { name: "Biologi", value: 9},
-  ];
+  $scope.pilihans = $http({
+    url: 'http://www.andibaskoro.com/iphe/api/prodis',
+    method: 'get',
+    dataType: 'json'
+  }).success(function(data){
+    console.log(data);
+  });
+
+  $scope.dates = $http({
+    url: 'http://www.andibaskoro.com/iphe/api/dates',
+    method: 'get',
+    dataType: 'json'
+  }).success(function(data){
+    console.log(data);
+  });
+
+  // $scope.pilihan1s = [
+  //               { name: "Prodi", value: null},
+  //               { name: "Pendidikan Dokter", value: 1 },
+  //               { name: "Teologi", value: 2},
+  //               { name: "Manajemen", value: 3},
+  //               { name: "Akuntansi", value: 4},
+  //               { name: "Teknik Arsitektur", value: 5},
+  //               { name: "Desain Produk", value: 6},
+  //               { name: "Teknik Informatika", value: 7},
+  //               { name: "Sistem Informasi", value: 8},
+  //               { name: "Biologi", value: 9},
+  // ];
+
+  // $scope.pilihan2s = [
+  //               { name: "Prodi", value: null},
+  //               { name: "Pendidikan Dokter", value: 1 },
+  //               { name: "Teologi", value: 2},
+  //               { name: "Manajemen", value: 3},
+  //               { name: "Akuntansi", value: 4},
+  //               { name: "Teknik Arsitektur", value: 5},
+  //               { name: "Desain Produk", value: 6},
+  //               { name: "Teknik Informatika", value: 7},
+  //               { name: "Sistem Informasi", value: 8},
+  //               { name: "Biologi", value: 9},
+  // ];
 
 })
 
