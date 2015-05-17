@@ -224,9 +224,41 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('HasilCtrl', function($scope){
-  $scope.getStatus = function(){
-    $scope.status = "Hello";
+.controller('HasilCtrl', function($scope, $http, $ionicLoading, $ionicPopup){
+  $scope.id;
+  $scope.getStatus = function(id){
+    //console.log(id);
+    if(!angular.isUndefined(id)){
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+      $http({
+        url: 'http://www.andibaskoro.com/iphe/api/status/'+id,
+        method: 'get',
+        dataType: 'json'
+      }).success(function(data){
+        if(data.status != 1){
+          $scope.flagZero = true;
+          $scope.flagShow = false;
+          $scope.statusZero = data.data;
+        }else{
+          $scope.flagZero = false;
+          $scope.flagShow = true;
+          $scope.status = data.data;
+        }
+        $ionicLoading.hide();
+      });
+    }else{
+      //alert("hello");
+      var alertPopup = $ionicPopup.alert({
+           title: 'Error',
+           template: 'Nomor Pendaftaran harus diisi.'
+         });
+         alertPopup.then(function(res) {
+           console.log('');
+         });
+    }
+
   }
 })
 

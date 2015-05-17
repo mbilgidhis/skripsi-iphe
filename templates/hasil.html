@@ -3,15 +3,20 @@
     <div class="box tengah">
     	<div class="list list-inset">
     	  <label class="item item-input">
-    	    <input type="text" placeholder="No. Pendaftaran" id="no_daftar">
+    	    <input type="text" placeholder="No. Pendaftaran" ng-model="id">
     	  </label>
 				<br/>
-    	  <button class="button button-small button-balanced" ng-click="getStatus()">
+    	  <button class="button button-small button-balanced" ng-click="getStatus(id)">
     	        Lihat Hasil
     	  </button>
-          <br/>
-          <div class="box tengah" id="info">{{status}}</div>
+        <br/>
+        <div class="box tengah" ng-show="flagZero">{{ statusZero }}</div>
     	</div>
+    </div>
+    <div class="card" ng-show="flagShow">
+        <div class="item item-text-wrap" ng-repeat="statu in status">
+          <p>{{statu.keterangan}}</p>
+        </div>
     </div>
   </ion-content>
 </ion-view>
