@@ -54,7 +54,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('Pendaftaran1Ctrl', function($scope, $state, DataPendaftar, $http){
+.controller('Pendaftaran1Ctrl', function($scope, $state, DataPendaftar, $http, $ionicPopup){
   
   $scope.kelamins = [
                 { name: "Pilih salah satu", value: null},
@@ -122,6 +122,14 @@ angular.module('starter.controllers', [])
     dataType: 'json'
   }).success(function(data){
     $scope.pilihans = data.data;
+  }).error(function(e){
+    var alertErrorPilihan = $ionicPopup.alert({
+      title: 'Error',
+      template: 'Gagal mengambil data pilihan prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+    });
+    alertErrorPilihan.then(function(res){
+      console.log('');
+    });
   });
 
   $scope.dates = {};
@@ -132,6 +140,14 @@ angular.module('starter.controllers', [])
     dataType: 'json'
   }).success(function(data){
     $scope.dates = data.data;
+  }).error(function(e){
+    var alertErrorTanggal = $ionicPopup.alert({
+      title: 'Error',
+      template: 'Gagal mengambil data tanggal tes. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+    });
+    alertErrorTanggal.then(function(res){
+      console.log('');
+    });
   });
 
 
@@ -247,6 +263,15 @@ angular.module('starter.controllers', [])
           $scope.status = data.data;
         }
         $ionicLoading.hide();
+      }).error(function(e){
+        $ionicLoading.hide();
+        var alertError = $ionicPopup.alert({
+          title: 'Error',
+          template: 'Gagal mengambil data. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+        });
+        alertError.then(function(res){
+          console.log('');
+        });
       });
     }else{
       //alert("hello");
