@@ -18,31 +18,36 @@
     <label class="item item-select item-stacked-label">
       <span class="input-label">Jenis Kelamin</span>
       <select id="" name="">
-        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin.value}}" ng-model="dataPendaftar1.jenisKelamin">{{kelamin.name}}</option>
+        <option selected disabled> -- Pilih salah satu -- </option>
+        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin}}" ng-model="dataPendaftar1.jenisKelamin">{{kelamin}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Status Pernikahan</span>
       <select id="" name="">
-        <option ng-repeat="status in statuss" ng-value="{{status.value}}"ng-model="dataPendaftar1.statusPernikahan">{{status.name}}</option>
+        <option selected disabled> -- Pilih salah satu -- </option>
+        <option ng-repeat="status in statuss" ng-value="{{status}}"ng-model="dataPendaftar1.statusPernikahan">{{status}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Agama</span>
       <select id="" name="">
-        <option ng-repeat="agama in agamas" ng-value="{{agama.value}}" ng-model="dataPendaftar1.agama">{{agama.name}}</option>
+        <option selected disabled> -- Pilih salah satu -- </option>
+        <option ng-repeat="agama in agamas" ng-value="{{agama}}" ng-model="dataPendaftar1.agama">{{agama}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Golongan Darah</span>
       <select id="" name="">
+        <option selected disabled> -- Pilih salah satu -- </option>
       	<option ng-repeat="blood in bloods" ng-value="{{blood}}" ng-model="dataPendaftar1.golonganDarah">{{blood}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Kewarganegaraan</span>
       <select id="" name="">
-        <option ng-repeat="warga in wargas" ng-value="{{warga.value}}" ng-model="dataPendaftar1.kewarganegaraan">{{warga.name}}</option>
+        <option selected disabled> -- Pilih salah satu -- </option>
+        <option ng-repeat="warga in wargas" ng-value="{{warga}}" ng-model="dataPendaftar1.kewarganegaraan">{{warga}}</option>
       </select>
     </label>
     <label class="item item-textarea item-stacked-label">

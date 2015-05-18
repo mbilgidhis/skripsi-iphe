@@ -22,19 +22,22 @@
       <label class="item item-select item-stacked-label">
         <span class="input-label">SMA / SMK</span>
         <select ng-model="dataPendaftar3.smasmk">
-            <option ng-repeat="smasmk in smasmks" ng-value="{{smasmk}}" >{{smasmk}}</option>
+          <option selected disabled> -- Pilih salah satu -- </option>
+          <option ng-repeat="smasmk in smasmks" ng-value="{{smasmk}}" >{{smasmk}}</option>
         </select>
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Negri / Swasta</span>
         <select ng-model="dataPendaftar3.negriSwasta">
-            <option ng-repeat="sekolah in sekolahs" ng-value="{{sekolah.value}}" >{{sekolah.name}}</option>
+          <option selected disabled> -- Pilih salah satu -- </option>
+          <option ng-repeat="sekolah in sekolahs" ng-value="{{sekolah}}" >{{sekolah}}</option>
         </select>
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Jurusan</span>
         <select ng-model="dataPendaftar3.jurusanSekolah">
-            <option ng-repeat="jurusan in jurusans" ng-value="{{jurusan.value}}" >{{jurusan.name}}</option>
+          <option selected disabled> -- Pilih salah satu -- </option>
+          <option ng-repeat="jurusan in jurusans" ng-value="{{jurusan}}" >{{jurusan}}</option>
         </select>
       </label>
       <br/>
