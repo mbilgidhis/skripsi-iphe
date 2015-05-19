@@ -20,21 +20,21 @@
       <span class="input-label">Jenis Kelamin</span>
       <select ng-model="dataPendaftar1.jenisKelamin" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin}}">{{kelamin}}</option>
+        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin.value}}">{{kelamin.nama}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Status Pernikahan</span>
       <select ng-model="dataPendaftar1.statusPernikahan" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="status in statusPernikahans" ng-value="{{status}}">{{status}}</option>
+        <option ng-repeat="status in statusPernikahans" ng-value="{{status.value}}">{{status.nama}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Agama</span>
       <select ng-model="dataPendaftar1.agama" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="agama in agamas" ng-value="{{agama}}">{{agama}}</option>
+        <option ng-repeat="agama in agamas" ng-value="{{agama.value}}">{{agama.nama}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">

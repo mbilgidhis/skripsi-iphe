@@ -36,13 +36,13 @@
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Jurusan</span>
-        <select ng-model="dataPendaftar3.jurusanSekolah" required>
+        <select ng-model="dataPendaftar3.jurusan" required>
           <option selected disabled> -- Pilih salah satu -- </option>
-          <option ng-repeat="jurusan in jurusans" ng-value="{{jurusan}}" >{{jurusan}}</option>
+          <option ng-repeat="jurusan in jurusanSekolahs" ng-value="{{jurusan.value}}" >{{jurusan.nama}}</option>
         </select>
       </label>
       <br/>
-      <div class="box tengah"><button ng-disabled="pendaftaran3.$invalid" class="button button-balanced" ng-click="daftar()">Daftar</button>
+      <div class="box tengah"><button  ng-disabled="pendaftaran3.$invalid" class="button button-balanced" ng-click="daftar()">Daftar</button>
         </form>
   </div>
   </ion-content>

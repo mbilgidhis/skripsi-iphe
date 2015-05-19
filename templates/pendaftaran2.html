@@ -20,7 +20,7 @@
         <span class="input-label">Pekerjaan</span>
         <select ng-model="dataPendaftar2.pekerjaanOrtu" required>
           <option selected disabled> -- Pilih salah satu -- </option>
-          <option ng-repeat="pekerjaan in pekerjaans" ng-value="{{pekerjaan}}">{{pekerjaan}}</option>
+          <option ng-repeat="pekerjaan in pekerjaans" ng-value="{{pekerjaan.value}}">{{pekerjaan.nama}}</option>
         </select>
       </label>
       <br/>

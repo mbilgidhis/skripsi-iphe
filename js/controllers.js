@@ -77,11 +77,27 @@ angular.module('starter.controllers', [])
     template: 'Loading data...'
   });
 
-  $scope.kelamins = ['Laki-laki', 'Perempuan'];
+  //$scope.kelamins = ['Laki-laki', 'Perempuan'];
+  $scope.kelamins = [
+        { nama: 'Laki-laki', value: 'Pria'},
+        { nama: 'Perempuan', value: 'Wanita'}
+  ];
 
-  $scope.statusPernikahans = ["Belum-menikah", "Menikah"];
+  //$scope.statusPernikahans = ["Belum-menikah", "Menikah"];
+  $scope.statusPernikahans = [
+        {nama: 'Belum menikah', value: 'Belum'},
+        {nama: 'Menikah', value: 'Menikah'}
+  ];
 
-  $scope.agamas = ['Kristen', 'Katholik', 'Islam', 'Buddha', 'Hindu', 'Lain-lain'];
+  //$scope.agamas = ['Kristen', 'Katholik', 'Islam', 'Buddha', 'Hindu', 'Lain-lain'];
+  $scope.agamas = [
+      { nama: 'Kristen', value:'Kristen'},
+      { nama: 'Katholik', value:'Katholik'},
+      { nama: 'Islam', value:'Islam'},
+      { nama: 'Budha', value:'Budha'},
+      { nama: 'Hindu', value:'Hindu'},
+      { nama: 'Lain-lain', value:'Lainlain'},
+  ];
 
   $scope.bloods = [ "A", "B", "O", "AB" ];
 
@@ -118,35 +134,33 @@ angular.module('starter.controllers', [])
   $scope.pilihans = {};
   $scope.dates = {};
   //load prodi first then load date
-  $timeout(function(){
-
+  $timeout( function() {
     var pilihan = $http({
       url: 'http://www.andibaskoro.com/iphe/api/prodis',
       method: 'get',
       dataType: 'json'
     }).success(function(dataProdi){
       //$ionicLoading.hide();
-      $scope.dates = dataProdi.data;
+      $scope.pilihans = dataProdi.data;
 
-      //load data tanggal test
       var date = $http({
         url: 'http://www.andibaskoro.com/iphe/api/dates',
         method: 'get',
         dataType: 'json'
       }).success(function(dataTanggal){
-        //$ionicLoading.hide();
-        $scope.pilihans = dataTanggal.data;
+        $ionicLoading.hide();
+        $scope.dates = dataTanggal.data;
       }).error(function(e){
         var alertErrorTanggal = $ionicPopup.alert({
           title: 'Error',
           template: 'Gagal mengambil data pilihan tanggal test. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
         });
         alertErrorTanggal.then(function(res){
-          //$ionicLoading.hide();
+          $ionicLoading.hide();
           console.log('');
         });
-      });
-      
+      });  
+
     }).error(function(e){
       var alertErrorProdi = $ionicPopup.alert({
         title: 'Error',
@@ -155,17 +169,25 @@ angular.module('starter.controllers', [])
       alertErrorProdi.then(function(res){
         $ionicLoading.hide();
         console.log('');
-        
       });
     });
 
-  }, 1);
-
+  }, 10);
+    
 })
 
 .controller('Pendaftaran2Ctrl', function($scope, $state, DataPendaftar, $http){
   
-  $scope.pekerjaans = ['PNS', 'Wiraswasta', 'Pegawai-swasta', 'Guru', 'TNI/POLRI', 'Petani', 'Pensiunan', 'Lain-lain'];
+  //$scope.pekerjaans = ['PNS', 'Wiraswasta', 'Pegawai-swasta', 'Guru', 'TNI-POLRI', 'Petani', 'Pensiunan', 'Lain-lain'];
+  $scope.pekerjaans = [
+          {nama:'PNS', value:'PNS'},
+          {nama:'Wiraswasta', value:'Wiraswasta'},
+          {nama:'Pegawai-swasta', value:'PegawaiSwasta'},
+          {nama:'TNI-POLRI', value:'TNIPOLRI'},
+          {nama:'Petani', value:'Petani'},
+          {nama:'Pensiunan', value:'Pensiunan'},
+          {nama:'Lain-lain', value:'Lain-lain'}
+  ];
 
   $scope.dataPendaftar2 = {
     namaOrtu: "",
@@ -191,7 +213,13 @@ angular.module('starter.controllers', [])
 
   $scope.sekolahs = ['Negri', 'Swasta'];
 
-  $scope.jurusans = ['IPA-Setara', 'IPS-Setara', 'Bahasa-Setara', 'Lain-lain'];
+  //$scope.jurusans = ['IPA-Setara', 'IPS-Setara', 'Bahasa-Setara', 'Lain-lain'];
+  $scope.jurusanSekolahs = [
+      {nama: "IPA/Setara", value: "IPA"},
+      {nama: "IPS/Setara", value: "IPS"},
+      {nama: "Bahasa/Setara", value: "Bahasa"},
+      {nama: "Lain-lain", value: "Lain-lain"}
+  ];
 
   $scope.dataPendaftar3 = {
     namaSekolah: "",
@@ -208,7 +236,7 @@ angular.module('starter.controllers', [])
     angular.forEach($scope.dataPendaftar3, function(value,key){
       DataPendaftar[key] = value;
     });
-    // var daftar = $http.post('http://www.andibaskoro.com/iphe/api/daftar', DataPendaftar)
+    // var daftar = $http.post('http://www.andibaskoro.com/iphe/api/daftars', angular.toJson(DataPendaftar))
     // .success(function(data){
     //   console.log(data);
     //   alert('data');
@@ -217,13 +245,13 @@ angular.module('starter.controllers', [])
     //   console.log("ERROR");
     //   alert('error');
     // });
-    //console.log(DataPendaftar);
+    
     console.log(angular.toJson(DataPendaftar));
 
     var daftar = $http({
-      url: 'http://andibaskoro.com/iphe/api/daftars', 
+      url: 'http://www.andibaskoro.com/iphe/api/daftars', 
       data: angular.toJson(DataPendaftar),
-      method: 'POST',
+      method: 'post',
       dataType: 'json',
       headers:{'Content-Type':'application/json'},
       transformRequest: function(obj) {
