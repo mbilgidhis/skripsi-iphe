@@ -117,42 +117,42 @@ angular.module('starter.controllers', [])
 
   $scope.pilihans = {};
   $scope.dates = {};
-
+  //load prodi first then load date
   $timeout(function(){
-
-    var date = $http({
-      url: 'http://www.andibaskoro.com/iphe/api/dates',
-      method: 'get',
-      dataType: 'json'
-    }).success(function(data){
-      $ionicLoading.hide();
-      $scope.dates = data.data;
-      
-    }).error(function(e){
-      var alertErrorTanggal = $ionicPopup.alert({
-        title: 'Error',
-        template: 'Gagal mengambil data tanggal tes. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
-      });
-      alertErrorTanggal.then(function(res){
-        $ionicLoading.hide();
-        console.log('');
-        
-      });
-    });
 
     var pilihan = $http({
       url: 'http://www.andibaskoro.com/iphe/api/prodis',
       method: 'get',
       dataType: 'json'
-    }).success(function(data){
-      $ionicLoading.hide();
-      $scope.pilihans = data.data;
-    }).error(function(e){
-      var alertErrorPilihan = $ionicPopup.alert({
-        title: 'Error',
-        template: 'Gagal mengambil data pilihan prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+    }).success(function(dataProdi){
+      //$ionicLoading.hide();
+      $scope.dates = dataProdi.data;
+
+      //load data tanggal test
+      var date = $http({
+        url: 'http://www.andibaskoro.com/iphe/api/dates',
+        method: 'get',
+        dataType: 'json'
+      }).success(function(dataTanggal){
+        //$ionicLoading.hide();
+        $scope.pilihans = dataTanggal.data;
+      }).error(function(e){
+        var alertErrorTanggal = $ionicPopup.alert({
+          title: 'Error',
+          template: 'Gagal mengambil data pilihan tanggal test. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+        });
+        alertErrorTanggal.then(function(res){
+          //$ionicLoading.hide();
+          console.log('');
+        });
       });
-      alertErrorPilihan.then(function(res){
+      
+    }).error(function(e){
+      var alertErrorProdi = $ionicPopup.alert({
+        title: 'Error',
+        template: 'Gagal mengambil data prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+      });
+      alertErrorProdi.then(function(res){
         $ionicLoading.hide();
         console.log('');
         
@@ -191,7 +191,7 @@ angular.module('starter.controllers', [])
 
   $scope.sekolahs = ['Negri', 'Swasta'];
 
-  $scope.jurusans = ['IPA/Setara', 'IPS/Setara', 'Bahasa/Setara', 'Lain-lain'];
+  $scope.jurusans = ['IPA-Setara', 'IPS-Setara', 'Bahasa-Setara', 'Lain-lain'];
 
   $scope.dataPendaftar3 = {
     namaSekolah: "",
@@ -208,16 +208,36 @@ angular.module('starter.controllers', [])
     angular.forEach($scope.dataPendaftar3, function(value,key){
       DataPendaftar[key] = value;
     });
-    var daftar = $http.post('http://www.andibaskoro.com/iphe/api/daftar', DataPendaftar)
-    .success(function(data){
-      console.log(data);
-      alert('data');
-    })
-    .error(function(data){
-      console.log("ERROR");
-      alert('error');
-    });
+    // var daftar = $http.post('http://www.andibaskoro.com/iphe/api/daftar', DataPendaftar)
+    // .success(function(data){
+    //   console.log(data);
+    //   alert('data');
+    // })
+    // .error(function(data){
+    //   console.log("ERROR");
+    //   alert('error');
+    // });
     //console.log(DataPendaftar);
+    console.log(angular.toJson(DataPendaftar));
+
+    var daftar = $http({
+      url: 'http://andibaskoro.com/iphe/api/daftars', 
+      data: angular.toJson(DataPendaftar),
+      method: 'POST',
+      dataType: 'json',
+      headers:{'Content-Type':'application/json'},
+      transformRequest: function(obj) {
+              var str = [];
+              for(var p in obj)
+              str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+              return str.join("&");
+          }
+    }).success(function(data){
+      alert(data);
+    }).error(function(e){
+      alert("ERROR");
+    });
+
   };
 
 })
