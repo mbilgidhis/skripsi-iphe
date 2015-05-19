@@ -54,41 +54,21 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('Pendaftaran1Ctrl', function($scope, $state, DataPendaftar, $http, $ionicPopup){
+.controller('Pendaftaran1Ctrl', function($scope, $state, DataPendaftar, $http, $ionicPopup, $timeout, $ionicLoading){
   
+  $ionicLoading.show({
+    template: 'Loading data...'
+  });
+
   $scope.kelamins = ['Laki-laki', 'Perempuan'];
-  //$scope.kelamins = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "Laki-laki", value: 1 },
-  //              { name: "Perempuan", value: 2},
-  //];
 
   $scope.statusPernikahans = ["Belum-menikah", "Menikah"];
-  //$scope.statuss = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "Belum menikah", value: 1 },
-  //              { name: "Menikah", value: 2},
-  //];
 
   $scope.agamas = ['Kristen', 'Katholik', 'Islam', 'Buddha', 'Hindu', 'Lain-lain'];
-  //$scope.agamas = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "Kristen", value: 1 },
-  //              { name: "Katholik", value: 2},
-  //              { name: "Islam", value: 3},
-  //              { name: "Buddha", value: 4},
-  //              { name: "Hindu", value: 5},
-  //              { name: "Lain-lain", value: 6},
-  //];
 
   $scope.bloods = [ "A", "B", "O", "AB" ];
 
   $scope.wargas = ['WNI', 'WNA'];
-  //$scope.wargas = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "WNI", value: 1 },
-  //              { name: "WNA", value: 2},
-  //];
 
   $scope.dataPendaftar1 = {
     namaPendaftar : "",
@@ -119,59 +99,55 @@ angular.module('starter.controllers', [])
   };       
 
   $scope.pilihans = {};
-
-  var pilihan = $http({
-    url: 'http://www.andibaskoro.com/iphe/api/prodis',
-    method: 'get',
-    dataType: 'json'
-  }).success(function(data){
-    $scope.pilihans = data.data;
-  }).error(function(e){
-    var alertErrorPilihan = $ionicPopup.alert({
-      title: 'Error',
-      template: 'Gagal mengambil data pilihan prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
-    });
-    alertErrorPilihan.then(function(res){
-      console.log('');
-    });
-  });
-
   $scope.dates = {};
 
-  var date = $http({
-    url: 'http://www.andibaskoro.com/iphe/api/dates',
-    method: 'get',
-    dataType: 'json'
-  }).success(function(data){
-    $scope.dates = data.data;
-  }).error(function(e){
-    var alertErrorTanggal = $ionicPopup.alert({
-      title: 'Error',
-      template: 'Gagal mengambil data tanggal tes. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+  $timeout(function(){
+    var pilihan = $http({
+      url: 'http://www.andibaskoro.com/iphe/api/prodis',
+      method: 'get',
+      dataType: 'json'
+    }).success(function(data){
+      $ionicLoading.hide();
+      $scope.pilihans = data.data;
+      
+    }).error(function(e){
+      var alertErrorPilihan = $ionicPopup.alert({
+        title: 'Error',
+        template: 'Gagal mengambil data pilihan prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+      });
+      alertErrorPilihan.then(function(res){
+        $ionicLoading.hide();
+        console.log('');
+        
+      });
     });
-    alertErrorTanggal.then(function(res){
-      console.log('');
+
+    var date = $http({
+      url: 'http://www.andibaskoro.com/iphe/api/dates',
+      method: 'get',
+      dataType: 'json'
+    }).success(function(data){
+      $ionicLoading.hide();
+      $scope.dates = data.data;
+      
+    }).error(function(e){
+      var alertErrorTanggal = $ionicPopup.alert({
+        title: 'Error',
+        template: 'Gagal mengambil data tanggal tes. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+      });
+      alertErrorTanggal.then(function(res){
+        $ionicLoading.hide();
+        console.log('');
+        
+      });
     });
-  });
-
-
+  }, 1);
 
 })
 
 .controller('Pendaftaran2Ctrl', function($scope, $state, DataPendaftar, $http){
   
   $scope.pekerjaans = ['PNS', 'Wiraswasta', 'Pegawai-swasta', 'Guru', 'TNI/POLRI', 'Petani', 'Pensiunan', 'Lain-lain'];
-  //$scope.pekerjaans = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "PNS", value: 1 },
-  //              { name: "Wiraswasta", value: 2},
-  //              { name: "Pegawai swasta", value: 3},
-  //              { name: "Guru", value: 4},
-  //              { name: "TNI/POLRI", value: 5},
-  //              { name: "Petani", value: 6},
-  //              { name: "Pensiunan", value: 7},
-  //              { name: "Lain-lain", value: 8},
-  //];
 
   $scope.dataPendaftar2 = {
     namaOrtu: "",
@@ -194,27 +170,10 @@ angular.module('starter.controllers', [])
 .controller('Pendaftaran3Ctrl', function($scope, $state, DataPendaftar, $http){
 
   $scope.smasmks = ['SMA', 'SMK'];
-  // $scope.smasmks = [
-  //               { name: "Pilih salah satu", value: null},
-  //               { name: "SMA", value: 1 },
-  //               { name: "SMK", value: 2},
-  // ];
 
   $scope.sekolahs = ['Negri', 'Swasta'];
-  //$scope.sekolahs = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "Negri", value: 1 },
-  //              { name: "Swasta", value: 2},
-  //];
 
   $scope.jurusans = ['IPA/Setara', 'IPS/Setara', 'Bahasa/Setara', 'Lain-lain'];
-  //$scope.jurusans = [
-  //              { name: "Pilih salah satu", value: null},
-  //              { name: "IPA/Setara", value: 1 },
-  //              { name: "IPS/Setara", value: 2},
-  //              { name: "Bahasa/Setara", value: 3},
-  //              { name: "Lain-lain", value: 4},
-  //];
 
   $scope.dataPendaftar3 = {
     namaSekolah: "",
