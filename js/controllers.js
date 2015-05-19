@@ -232,36 +232,23 @@ angular.module('starter.controllers', [])
   };
 
   $scope.daftar = function(){
-    //console.log($scope.dataPendaftar3);
+    
     angular.forEach($scope.dataPendaftar3, function(value,key){
       DataPendaftar[key] = value;
     });
-    // var daftar = $http.post('http://www.andibaskoro.com/iphe/api/daftars', angular.toJson(DataPendaftar))
-    // .success(function(data){
-    //   console.log(data);
-    //   alert('data');
-    // })
-    // .error(function(data){
-    //   console.log("ERROR");
-    //   alert('error');
-    // });
-    
-    console.log(angular.toJson(DataPendaftar));
 
-    var daftar = $http({
-      url: 'http://www.andibaskoro.com/iphe/api/daftars', 
-      data: angular.toJson(DataPendaftar),
-      method: 'post',
-      dataType: 'json',
-      headers:{'Content-Type':'application/json'},
-      transformRequest: function(obj) {
-              var str = [];
-              for(var p in obj)
-              str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-              return str.join("&");
-          }
+    var dataPendaftar = JSON.stringify(DataPendaftar);
+
+    
+    console.log(dataPendaftar);
+
+    $http({
+        method: "post",
+        url: 'http://www.andibaskoro.com/iphe/api/daftars',
+        data: dataPendaftar,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data){
-      alert(data);
+      console.log(data);
     }).error(function(e){
       alert("ERROR");
     });
