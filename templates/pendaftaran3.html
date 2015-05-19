@@ -3,45 +3,47 @@
   <div class="tengah">Bagian 3 dari 3</div>
   <h4><pre>Bagian III: Data Sekolah Menengah</pre></h4>
     <div class="list">
+      <form name="pendaftaran3">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nama Sekolah</span>
-        <input type="text" placeholder="Nama sekolah asal Anda" maxlength="50" ng-model="dataPendaftar3.namaSekolah">
+        <input type="text" placeholder="Nama sekolah asal Anda" maxlength="50" ng-model="dataPendaftar3.namaSekolah" required>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Alamat Sekolah</span>
-        <input type="text" placeholder="Alamat asal sekolah Anda" ng-model="dataPendaftar3.alamatSekolah">
+        <input type="text" placeholder="Alamat asal sekolah Anda" ng-model="dataPendaftar3.alamatSekolah" required>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">No. Telepon</span>
-        <input type="tel" placeholder="Nomor telepon sekolah Anda" ng-model="dataPendaftar3.teleponSekolah">
+        <input type="tel" placeholder="Nomor telepon sekolah Anda" ng-model="dataPendaftar3.teleponSekolah" required>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Tahun Lulus</span>
-        <input type="number" placeholder="Tahun Anda lulus" maxLength="4" ng-model="dataPendaftar3.tahunLulus">
+        <input type="number" placeholder="Tahun Anda lulus" maxLength="4" ng-model="dataPendaftar3.tahunLulus" required>
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">SMA / SMK</span>
-        <select ng-model="dataPendaftar3.smasmk">
+        <select ng-model="dataPendaftar3.smasmk" required>
           <option selected disabled> -- Pilih salah satu -- </option>
           <option ng-repeat="smasmk in smasmks" ng-value="{{smasmk}}" >{{smasmk}}</option>
         </select>
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Negri / Swasta</span>
-        <select ng-model="dataPendaftar3.negriSwasta">
+        <select ng-model="dataPendaftar3.negriSwasta" required>
           <option selected disabled> -- Pilih salah satu -- </option>
           <option ng-repeat="sekolah in sekolahs" ng-value="{{sekolah}}" >{{sekolah}}</option>
         </select>
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Jurusan</span>
-        <select ng-model="dataPendaftar3.jurusanSekolah">
+        <select ng-model="dataPendaftar3.jurusanSekolah" required>
           <option selected disabled> -- Pilih salah satu -- </option>
           <option ng-repeat="jurusan in jurusans" ng-value="{{jurusan}}" >{{jurusan}}</option>
         </select>
       </label>
       <br/>
-      <div class="box tengah"><button class="button button-balanced" ng-click="daftar()">Daftar</button>
+      <div class="box tengah"><button ng-disabled="pendaftaran3.$invalid" class="button button-balanced" ng-click="daftar()">Daftar</button>
+        </form>
   </div>
   </ion-content>
 </ion-view>

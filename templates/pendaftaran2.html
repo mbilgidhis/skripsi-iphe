@@ -3,28 +3,29 @@
     <div class="tengah">Bagian 2 dari 3</div>
     <h4><pre>Bagian II: Data Orang Tua / Wali</pre></h4>
     <div class="list">
+      <form name="pendaftaran2">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nama Lengkap</span>
-        <input type="text" placeholder="Nama lengkap orang tua / wali" maxlength="50" ng-model="dataPendaftar2.namaOrtu">
+        <input type="text" placeholder="Nama lengkap orang tua / wali" maxlength="50" ng-model="dataPendaftar2.namaOrtu" required>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Alamat</span>
-        <input type="text" placeholder="Alamat orang tua / wali" ng-model="dataPendaftar2.alamatOrtu">
+        <input type="text" placeholder="Alamat orang tua / wali" ng-model="dataPendaftar2.alamatOrtu" required>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">No. Telepon</span>
-        <input type="tel" placeholder="Nomor telepon orang tua / wali" ng-model="dataPendaftar2.teleponOrtu">
+        <input type="tel" placeholder="Nomor telepon orang tua / wali" ng-model="dataPendaftar2.teleponOrtu" required>
       </label>
       <label class="item item-select item-stacked-label">
         <span class="input-label">Pekerjaan</span>
-        <select ng-model="dataPendaftar2.pekerjaanOrtu">
+        <select ng-model="dataPendaftar2.pekerjaanOrtu" required>
           <option selected disabled> -- Pilih salah satu -- </option>
           <option ng-repeat="pekerjaan in pekerjaans" ng-value="{{pekerjaan}}">{{pekerjaan}}</option>
         </select>
       </label>
       <br/>
-      <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar3()">Lanjut</button></div>
-      
+      <div class="box tengah"><button ng-disabled="pendaftaran2.$invalid" class="button button-balanced" ng-click="gotoNextDaftar3()">Lanjut</button></div>
+      </form>
     </div>
   </ion-content>
 </ion-view>

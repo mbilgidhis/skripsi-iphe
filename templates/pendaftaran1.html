@@ -3,100 +3,103 @@
   <div class="tengah">Bagian 1 dari 3</div>
   <h4><pre>Bagian I: Data Diri</pre></h4>
   <div class="list">
+    <form name="pendaftaran1" id="pendaftaran1">
     <label class="item item-input item-stacked-label">
       <span class="input-label">Nama Lengkap</span>
-      <input type="text" placeholder="Nama lengkap sesuai ijazah" maxlength="50" ng-model="dataPendaftar1.namaPendaftar">
+      <input type="text" placeholder="Nama lengkap sesuai ijazah" maxlength="50" ng-model="dataPendaftar1.namaPendaftar" required>
     </label>
     <label class="item item-input item-stacked-label">
       <span class="input-label">Tempat Lahir</span>
-      <input type="text" placeholder="Kota lahir Anda" maxlength="20" ng-model="dataPendaftar1.tempatLahir">
+      <input type="text" placeholder="Kota lahir Anda" maxlength="20" ng-model="dataPendaftar1.tempatLahir" required>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Tanggal Lahir</span>
-      <input type="date" placeholder="Tanggal lahir Anda" ng-model="dataPendaftar1.tanggalLahir">
+      <input type="date" placeholder="Tanggal lahir Anda" ng-model="dataPendaftar1.tanggalLahir" required>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Jenis Kelamin</span>
-      <select id="" name="">
+      <select ng-model="dataPendaftar1.jenisKelamin" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin}}" ng-model="dataPendaftar1.jenisKelamin">{{kelamin}}</option>
+        <option ng-repeat="kelamin in kelamins" ng-value="{{kelamin}}">{{kelamin}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Status Pernikahan</span>
-      <select id="" name="">
+      <select ng-model="dataPendaftar1.statusPernikahan" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="status in statuss" ng-value="{{status}}"ng-model="dataPendaftar1.statusPernikahan">{{status}}</option>
+        <option ng-repeat="status in statusPernikahans" ng-value="{{status}}">{{status}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Agama</span>
-      <select id="" name="">
+      <select ng-model="dataPendaftar1.agama" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="agama in agamas" ng-value="{{agama}}" ng-model="dataPendaftar1.agama">{{agama}}</option>
+        <option ng-repeat="agama in agamas" ng-value="{{agama}}">{{agama}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Golongan Darah</span>
-      <select id="" name="">
+      <select ng-model="dataPendaftar1.golonganDarah" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-      	<option ng-repeat="blood in bloods" ng-value="{{blood}}" ng-model="dataPendaftar1.golonganDarah">{{blood}}</option>
+      	<option ng-repeat="blood in bloods" ng-value="{{blood}}" >{{blood}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Kewarganegaraan</span>
-      <select id="" name="">
+      <select ng-model="dataPendaftar1.kewarganegaraan" required>
         <option selected disabled> -- Pilih salah satu -- </option>
-        <option ng-repeat="warga in wargas" ng-value="{{warga}}" ng-model="dataPendaftar1.kewarganegaraan">{{warga}}</option>
+        <option ng-repeat="warga in wargas" ng-value="{{warga}}" >{{warga}}</option>
       </select>
     </label>
     <label class="item item-textarea item-stacked-label">
       <span class="input-label">Alamat Asal</span>
-      <textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat asal Anda" ng-model="dataPendaftar1.alamatAsal"></textarea>
+      <textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat asal Anda" ng-model="dataPendaftar1.alamatAsal" required></textarea>
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">No. Telepon</span>
-    	<input type="tel" placeholder="Nomor yang aktif" ng-model="dataPendaftar1.noTelepon">
+    	<input type="tel" placeholder="Nomor yang aktif" ng-model="dataPendaftar1.noTelepon" required>
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">E-mail</span>
-    	<input type="email" placeholder="E-mail yang aktif"ng-model="dataPendaftar1.email">
+    	<input type="email" placeholder="E-mail yang aktif"ng-model="dataPendaftar1.email" required>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Pilihan 1</span>
-      <select ng-model="dataPendaftar1.pilihan1">
+      <select ng-model="dataPendaftar1.pilihan1" required>
         <option selected disabled> -- Pilih salah satu -- </option>
         <option ng-repeat="pilihan in pilihans" ng-value="{{pilihan.id}}">{{pilihan.prodi}}</option>
       </select>
     </label>
     <label class="item item-select item-stacked-label">
       <span class="input-label">Pilihan 2</span>
-      <select ng-model="dataPendaftar1.pilihan2">
+      <select ng-model="dataPendaftar1.pilihan2" required>
         <option selected disabled> -- Pilih salah satu -- </option>
         <option ng-repeat="pilihan in pilihans" ng-value="{{pilihan.id}}">{{pilihan.prodi}}</option>
       </select>
     </label>
     <label class="item item-input item-stacked-label">
       <span class="input-label">Sumbangan Pilihan 1</span>
-      <input type="number" placeholder="Masukkan dalam rupiah" ng-model="dataPendaftar1.sumbangan1">
+      <input type="number" placeholder="Masukkan dalam rupiah" ng-model="dataPendaftar1.sumbangan1" required>
     </label>
     <label class="item item-input item-stacked-label">
       <span class="input-label">Sumbangan Pilihan 2</span>
-      <input type="number" placeholder="Masukkan dalam rupiah" ng-model="dataPendaftar1.sumbangan2">
+      <input type="number" placeholder="Masukkan dalam rupiah" ng-model="dataPendaftar1.sumbangan2" required>
     </label>
     <label class="item item-select item-stacked-label">
     	<span class="input-label">Pilihan Tanggal Tes</span>
-      <select ng-model="dataPendaftar1.tanggalTes">
+      <select ng-model="dataPendaftar1.tanggalTes" required>
         <option selected disabled> -- Pilih tanggal -- </option>
     	  <option ng-repeat="date in dates" ng-value="{{date.id}}">{{date.keterangan + " | " + date.tanggal}}</option>
       </select>
     </label>
     <label class="item item-input item-stacked-label">
     	<span class="input-label">Alamat Pemberitahuan Hasil Tes</span>
-    	<textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat pengiriman hasil tes" ng-model="dataPendaftar1.alamatHasil"></textarea>
+    	<textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat pengiriman hasil tes" ng-model="dataPendaftar1.alamatHasil" required></textarea>
     </label>
     <br/>
-    <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar2()">Lanjut</button></div>
+    <div class="box tengah"><button ng-disabled="pendaftaran1.$invalid" class="button button-balanced" ng-click="gotoNextDaftar2()">Lanjut</button></div>
+    </form>
+    
     
   </div>
   </ion-content>

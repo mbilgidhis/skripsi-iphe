@@ -63,7 +63,7 @@ angular.module('starter.controllers', [])
   //              { name: "Perempuan", value: 2},
   //];
 
-  $scope.statuss = ['Belum menikah', 'Menikah'];
+  $scope.statusPernikahans = ["Belum-menikah", "Menikah"];
   //$scope.statuss = [
   //              { name: "Pilih salah satu", value: null},
   //              { name: "Belum menikah", value: 1 },
@@ -160,7 +160,7 @@ angular.module('starter.controllers', [])
 
 .controller('Pendaftaran2Ctrl', function($scope, $state, DataPendaftar, $http){
   
-  $scope.pekerjaans = ['PNS', 'Wiraswasta', 'Pegawai swasta', 'Guru', 'TNI/POLRI', 'Petani', 'Pensiunan', 'Lain-lain'];
+  $scope.pekerjaans = ['PNS', 'Wiraswasta', 'Pegawai-swasta', 'Guru', 'TNI/POLRI', 'Petani', 'Pensiunan', 'Lain-lain'];
   //$scope.pekerjaans = [
   //              { name: "Pilih salah satu", value: null},
   //              { name: "PNS", value: 1 },
