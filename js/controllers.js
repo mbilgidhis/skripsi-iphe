@@ -25,11 +25,28 @@ angular.module('starter.controllers', [])
     alamatSekolah: "",
     teleponSekolah : "",
     tahunLulus : "",
-    sasmk : "",
+    smasmk : "",
     negriSwasta : "",
     jurusanSekolah : ""
   };
   return data;
+})
+
+.directive('dateInput', function(dateFilter){
+  return {
+    require: 'ng-model',
+    template: '<input type="date"></input>',
+    replace: true,
+    link: function(scope,elm,attrs, ngModelCtrl){
+      ngModelCtrl.$formatters.unshift(function(modelValue){
+        return dateFilter(modelValue, 'yyyy-MM-dd');
+      });
+      ngModelCtrl.$parsers.unshift(function(viewValue){
+        return new Date(viewValue);
+      });
+    }
+  };
+
 })
 
 .controller('AppCtrl', function($scope, $location) {
@@ -102,25 +119,6 @@ angular.module('starter.controllers', [])
   $scope.dates = {};
 
   $timeout(function(){
-    var pilihan = $http({
-      url: 'http://www.andibaskoro.com/iphe/api/prodis',
-      method: 'get',
-      dataType: 'json'
-    }).success(function(data){
-      $ionicLoading.hide();
-      $scope.pilihans = data.data;
-      
-    }).error(function(e){
-      var alertErrorPilihan = $ionicPopup.alert({
-        title: 'Error',
-        template: 'Gagal mengambil data pilihan prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
-      });
-      alertErrorPilihan.then(function(res){
-        $ionicLoading.hide();
-        console.log('');
-        
-      });
-    });
 
     var date = $http({
       url: 'http://www.andibaskoro.com/iphe/api/dates',
@@ -141,6 +139,26 @@ angular.module('starter.controllers', [])
         
       });
     });
+
+    var pilihan = $http({
+      url: 'http://www.andibaskoro.com/iphe/api/prodis',
+      method: 'get',
+      dataType: 'json'
+    }).success(function(data){
+      $ionicLoading.hide();
+      $scope.pilihans = data.data;
+    }).error(function(e){
+      var alertErrorPilihan = $ionicPopup.alert({
+        title: 'Error',
+        template: 'Gagal mengambil data pilihan prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+      });
+      alertErrorPilihan.then(function(res){
+        $ionicLoading.hide();
+        console.log('');
+        
+      });
+    });
+
   }, 1);
 
 })
@@ -180,17 +198,26 @@ angular.module('starter.controllers', [])
     alamatSekolah: "",
     teleponSekolah : "",
     tahunLulus : "",
-    sasmk : "",
+    smasmk : "",
     negriSwasta : "",
     jurusanSekolah : ""
   };
 
   $scope.daftar = function(){
-    console.log($scope.dataPendaftar3);
+    //console.log($scope.dataPendaftar3);
     angular.forEach($scope.dataPendaftar3, function(value,key){
       DataPendaftar[key] = value;
     });
-    console.log(DataPendaftar);
+    var daftar = $http.post('http://www.andibaskoro.com/iphe/api/daftar', DataPendaftar)
+    .success(function(data){
+      console.log(data);
+      alert('data');
+    })
+    .error(function(data){
+      console.log("ERROR");
+      alert('error');
+    });
+    //console.log(DataPendaftar);
   };
 
 })
