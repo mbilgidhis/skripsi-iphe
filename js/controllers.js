@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
   return data;
 })
 
-.directive('dateInput', function(dateFilter){
+/*.directive('dateInput', function(dateFilter){
   return {
     require: 'ng-model',
     template: '<input type="date"></input>',
@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
     }
   };
 
-})
+})*/
 
 .controller('AppCtrl', function($scope, $location) {
   $scope.menus = [  { name : "Home", href : "#/app/home"},
@@ -239,7 +239,7 @@ angular.module('starter.controllers', [])
 
     var dataPendaftar = JSON.stringify(DataPendaftar);
 
-    
+    console.log(DataPendaftar);
     console.log(dataPendaftar);
 
     $http({

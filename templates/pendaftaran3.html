@@ -41,8 +41,12 @@
           <option ng-repeat="jurusan in jurusanSekolahs" ng-value="{{jurusan.value}}" >{{jurusan.nama}}</option>
         </select>
       </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Test Tanggal</span>
+        <input type="date" placeholder="Tanggal lahir Anda" ng-model="dataPendaftar3.tesTanggal" required>
+      </label>
       <br/>
-      <div class="box tengah"><button  ng-disabled="pendaftaran3.$invalid" class="button button-balanced" ng-click="daftar()">Daftar</button>
+      <div class="box tengah"><button  class="button button-balanced" ng-click="daftar()">Daftar</button>
         </form>
   </div>
   </ion-content>
