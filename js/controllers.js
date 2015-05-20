@@ -249,6 +249,7 @@ angular.module('starter.controllers', [])
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data){
       console.log(data);
+      alert(data);
     }).error(function(e){
       alert("ERROR");
     });
