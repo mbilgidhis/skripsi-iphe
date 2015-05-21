@@ -158,7 +158,13 @@ angular.module('starter.controllers', [])
         $ionicLoading.hide();
         var alertErrorTanggal = $ionicPopup.alert({
           title: 'Error',
-          template: 'Gagal mengambil data pilihan tanggal test. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+          template: 'Gagal mengambil data pilihan tanggal test. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.',
+          buttons: [
+                {
+                  text: 'OK',
+                  type: 'button-assertive'
+                }
+          ]          
         });
         alertErrorTanggal.then(function(res){
           $ionicLoading.hide();
@@ -170,7 +176,13 @@ angular.module('starter.controllers', [])
       $ionicLoading.hide();
       var alertErrorProdi = $ionicPopup.alert({
         title: 'Error',
-        template: 'Gagal mengambil data prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+        template: 'Gagal mengambil data prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.',
+        buttons: [
+              {
+                text: 'OK',
+                type: 'button-assertive'
+              }
+        ]
       });
       alertErrorProdi.then(function(res){
         $ionicLoading.hide();
@@ -335,7 +347,13 @@ angular.module('starter.controllers', [])
         $ionicLoading.hide();
         var alertError = $ionicPopup.alert({
           title: 'Error',
-          template: 'Gagal mengambil data. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
+          template: 'Gagal mengambil data. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.',
+          buttons: [
+                {
+                  text: 'OK',
+                  type: 'button-assertive'
+                }
+          ]          
         });
         alertError.then(function(res){
           console.log('');
