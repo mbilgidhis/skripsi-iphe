@@ -97,7 +97,7 @@
     	<textarea name="" id="" maxlength="50" cols="35" rows="3" placeholder="Alamat pengiriman hasil tes" ng-model="dataPendaftar1.alamatHasil" required></textarea>
     </label>
     <br/>
-    <div class="box tengah"><button class="button button-balanced" ng-click="gotoNextDaftar2()">Lanjut</button></div>
+    <div class="box tengah"><button  ng-disabled="pendaftaran1.$invalid" class="button button-balanced" ng-click="gotoNextDaftar2()">Lanjut</button></div>
     </form>
     
     

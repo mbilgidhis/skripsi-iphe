@@ -15,6 +15,8 @@ angular.module('starter.controllers', [])
     email : "",
     pilihan1 : "",
     pilihan2 : "",
+    sumbangan1: "",
+    sumbangan2: "",
     tanggalTes : "",
     alamatHasil: "",
     namaOrtu: "",
@@ -117,6 +119,8 @@ angular.module('starter.controllers', [])
     email : "",
     pilihan1 : "",
     pilihan2 : "",
+    sumbangan1: "",
+    sumbangan2: "",
     tanggalTes : "",
     alamatHasil: ""
   };
@@ -151,6 +155,7 @@ angular.module('starter.controllers', [])
         $ionicLoading.hide();
         $scope.dates = dataTanggal.data;
       }).error(function(e){
+        $ionicLoading.hide();
         var alertErrorTanggal = $ionicPopup.alert({
           title: 'Error',
           template: 'Gagal mengambil data pilihan tanggal test. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
@@ -162,6 +167,7 @@ angular.module('starter.controllers', [])
       });  
 
     }).error(function(e){
+      $ionicLoading.hide();
       var alertErrorProdi = $ionicPopup.alert({
         title: 'Error',
         template: 'Gagal mengambil data prodi. Silakan cek koneksi internet Anda atau kemungkinan terjadi masalah dengan server. Ulangi setelah beberapa saat.'
@@ -207,7 +213,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('Pendaftaran3Ctrl', function($scope, $state, DataPendaftar, $http){
+.controller('Pendaftaran3Ctrl', function($scope, $state, DataPendaftar, $http, $ionicLoading, $ionicPopup, $ionicHistory){
 
   $scope.smasmks = ['SMA', 'SMK'];
 
@@ -232,15 +238,15 @@ angular.module('starter.controllers', [])
   };
 
   $scope.daftar = function(){
-    
+    $ionicLoading.show({
+      template: 'Loading...'
+    });
+
     angular.forEach($scope.dataPendaftar3, function(value,key){
       DataPendaftar[key] = value;
     });
 
     var dataPendaftar = JSON.stringify(DataPendaftar);
-
-    console.log(DataPendaftar);
-    console.log(dataPendaftar);
 
     $http({
         method: "post",
@@ -249,9 +255,41 @@ angular.module('starter.controllers', [])
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data){
       console.log(data);
-      alert(data);
+      $ionicLoading.hide();
+      //alert(data);
+      var noDaftar = data['noDaftar'];
+      var tanggalTest = data['tanggalTes'];
+      var alertPopupSuccess = $ionicPopup.alert({
+         title: 'Selamat Anda terdaftar',
+         template: 'Silakan catat nomor pendaftaran Anda: '+noDaftar+', dengan tanggal tes: '+tanggalTest+'.'
+       });
+       alertPopupSuccess.then(function(res) {
+         $ionicHistory.nextViewOptions({
+          disableBack: true
+         });
+         $state.go('app.home');
+         $ionicHistory.clearHistory();
+       });
     }).error(function(e){
-      alert("ERROR");
+      $ionicLoading.hide();
+      var alertPopupFailed = $ionicPopup.alert({
+         title: 'Error',
+         template: 'Pendaftaran Gagal. Silakan ulangi kembali.',
+         buttons: [
+                {
+                  text: 'OK',
+                  type: 'button-assertive'
+                }
+         ]
+       });
+       alertPopupFailed.then(function(res) {
+         //console.log('');
+         $ionicHistory.nextViewOptions({
+             disableBack: true
+           });
+         $state.go('app.pendaftaran1');
+         $ionicHistory.clearHistory();
+       });
     });
 
   };
@@ -307,7 +345,12 @@ angular.module('starter.controllers', [])
       //alert("hello");
       var alertPopup = $ionicPopup.alert({
            title: 'Error',
-           template: 'Nomor Pendaftaran harus diisi.'
+           template: 'Nomor Pendaftaran harus diisi.',
+           buttons: [
+                  { text: 'Ulangi',
+                    type: 'button-assertive'
+                  }
+              ]
          });
          alertPopup.then(function(res) {
            console.log('');
